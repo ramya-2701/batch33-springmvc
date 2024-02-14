@@ -1,7 +1,4 @@
 package com.java.cis;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +20,7 @@ public class BMIController {
     public String result(@RequestParam("height") double heightInInches,
                                @RequestParam("weight") double weightInPounds,
                                Model model) {
-        double bmi = weightInPounds / (heightInInches * heightInInches) * 703;
+        double bmi = Math.round((weightInPounds / (heightInInches * heightInInches) * 703)*100)/100.0;
 
         model.addAttribute("height",heightInInches);
         model.addAttribute("weight",weightInPounds);
